@@ -1,4 +1,42 @@
 
+class Student
+{
+public:
+	friend ostream& operator <<(ostream& outs, const Student& student_person);
+	//Precondition: If outs is a file output stream, then outs has already been
+	//connected to a file
+	//Postcondition: ____________NEED TO FIGURE IT OUT_________
+	//...
+
+	//DO WE NEED TO OVERLOAD THIS?
+	friend istream& operator <<(istream& outs, const Student& student_person);
+	//Precondition: If outs is a file output stream, then outs has already been
+	//connected to a file
+	//Postcondition: ____________NEED TO FIGURE IT OUT_________
+	//...
+}
+
+//NEED TO SEE IF Student and student_person
+//Assume student_person is a domestic or and international student object
+//THIS IS WRONG--> NEED TO HAVE SOMETHING DIFFERENT FOR DOM AND INT
+ostream& operator <<(ostream& outs, const Student& student_person)
+{
+	outs<< student_person.firstName;
+	outs<< student_person.lastName;
+	outs<< student_person.cgpa;
+	outs<< student_person.researchScore;
+	outs<< student_person.studentID;
+	outs<< student_person.province;
+	outs<< student_person.country;
+	outs<< student_person.reading;
+	outs<< student_person.listening;
+	outs<< student_person.speaking;
+	outs<< student_person.writing;
+	outs<< student_person.totalScore;
+	return outs;
+}
+
+
 //This is a Sort function that sorts the students by their CGPA --> using compareCGPA
 void sort_CGPA(Student _studArray)
 {	
