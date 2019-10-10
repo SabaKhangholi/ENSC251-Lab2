@@ -164,7 +164,7 @@ void PrintArrayInternational(Student _studArray)
 	int i,j;
 	for (i=0, i<arr_len-1, i++)
 	{
-		cout<< _studArray[i].getstdentID()<<" "
+		cout<< _studArray[i].getstudentID()<<" "
 			<< _studArray[i].getfirstName()<<" "
 			<< _studArray[i].getlastName()<<" "
 			<< _studArray[i].getcountry()<<" "
