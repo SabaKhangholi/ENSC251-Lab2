@@ -1,3 +1,114 @@
+//Sharanjit's Compares that do not work :(
+
+//Swap fucntion definitions
+void swap_int(int* first, int* second)
+{
+	int temp;
+	temp = *first;
+	*first = *second;
+	*second = temp;
+};
+
+void swap_float(float* first, float* second)
+{
+	float temp;
+	temp = *first;
+	*first = *second;
+	*second = temp;
+};
+
+void swap_string(string* first, string* second)
+{
+	string temp;
+	temp = *first;
+	*first = *second;
+	*second = temp;
+};
+
+
+//friend function definitons
+int compareCGPA(float cgpa1, float cgpa2)
+{
+	if (cgpa1 > cgpa2)
+	{
+		return 1;
+	}
+	else if (cgpa1 = cgpa2)
+	{
+		return 0;
+	}
+	else if (cgpa1 < cgpa2)
+	{
+		return -1;
+	};
+};
+
+int compareresearchScore(int researchScore1, int researchScore2)
+{
+
+	if (researchScore1 > researchScore2)
+	{
+		return 1;
+	}
+	else if (researchScore1 = researchScore2)
+	{
+		return 0;
+	}
+	else if (researchScore1 < researchScore2)
+	{
+		return -1;
+	};
+
+};
+//
+//int compareFirstName(string firstName1, string firstName2)
+//{
+//	int result;
+//	int count = 30;
+//	int len_FN1 = firstName1.size();
+//	int len_FN2 = firstName2.size();
+//	int max_value;
+//
+//
+//	char str1[len_FN1 + 1] = firstName1;
+//	char str2[len_FN2 + 1] = firstName2;
+//
+//	if (len_FN1 > len_FN2)
+//	{
+//		max_value = len_FN2;
+//	}
+//	else if (len_FN1 > len_FN2)
+//	{
+//		max_value = len_FN2;
+//	};
+//
+//
+//	if (len_FN1 == len_FN2)
+//	{
+//		for (int i = 0; i < (len_FN1 - 1); i++)
+//		{
+//			result = strcmp(const char *str1[i], const char *str2[i]);
+//		};
+//	}
+//	else
+//	{
+//		for (int i = 0; i < max_value - 1; i++) {};
+//	};
+//
+//	
+//	result = strncmp(const char firstName1, const char firstName2, size_t count) //count: number of characters we allow
+//	return result; // not sure if this syntax works --seems cleaner
+//}
+//
+//friend int compareLastName(string lastName1 lastName2)
+//{
+//	int count = 30;
+//	result = strncmp(const char lastName1, const char lastName2, size_t count) //count: number of characters we allow
+//		return result; // not sure if this syntax works --seems cleaner	
+//}
+
+
+//===================================================================
 // new check functions for the cgpa and research score 
 /*This is the check function for the CGPA. The bounds are from 0 to 4.33 inclusive.*/
 bool Student::checkcgpa() //make sure to prototype
