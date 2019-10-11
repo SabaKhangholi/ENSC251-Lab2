@@ -14,7 +14,32 @@ public:
 	//connected to a file
 	//Postcondition: ____________NEED TO FIGURE IT OUT_________
 	//...
+	
+	//friend funtion prototypes
+	friend int compareCGPA(float cgpa1, float cgpa2);
+	friend int compareResearchScore(int researchScore1, int researchScore2);
+	friend int compareFirstName(string firstName1, string firstName2);
+	friend int compareLastName(string lastName1, string lastName2);
 }
+
+
+//sort  functions
+void sort_dom_CGPA(DomesticStudent);
+void sort_int_CGPA(InternationalStudent);
+
+void sort_dom_ResearchScore(DomesticStudent);
+void sort_int_ResearchScore(InternationalStudent);
+
+void sort_dom_FirstName(DomesticStudent);
+void sort_int_FirstName(InternationalStudent);
+
+void sort_dom_LastName(DomesticStudent);
+void sort_int_LastName(InternationalStudent);
+
+//swap fucntions 
+void swap_int(int*, int*);
+void swap_float(float*, float*);
+void swap_string(string*, string*);
 
 //NEED TO SEE IF Student and student_person
 //Assume student_person is a domestic or and international student object
