@@ -71,3 +71,88 @@ bool ToeflScore::checktotalScore()//make sure to prototype
 	return flag;
 }; 
 
+//friend funtion prototypes
+friend int compareCGPA(float cgpa1 cgpa2);
+friend int compareResearchScore(int researchScore1 researchScore2);
+friend int compareFirstName(string firstName1 firstName2);
+friend int compareLastName(string lastName1 lastName2);
+
+//friend function definitons
+friend int compareCGPA(float cgpa1 cgpa2)
+{
+	if (cgpa1> cgpa2)
+	{
+	return 1;	
+	}
+	else if (cgpa1= cgpa2)
+	{
+		return 0;
+	}
+	else (cgpa1< cgpa2)
+	{
+		return -1;
+	}	
+}
+
+friend int compareresearchScore(float researchScore1 researchScore2)
+{
+	
+	if (researchScore1> researchScore2)
+	{
+	return 1;	
+	}
+	else if (researchScore1= researchScore2)
+	{
+		return 0;
+	}
+	else (researchScore1< researchScore2)
+	{
+		return -1;
+	}
+	
+}
+
+friend int compareFirstName(string firstName1 firstName2)
+{
+	int count = 30;
+	result = strncmp(const char firstName1, const char firstName2, size_t count) //count: number of characters we allow
+	return result; // not sure if this syntax works --seems cleaner
+}
+
+friend int compareLastName(string lastName1 lastName2)
+{
+	int count = 30;
+	result = strncmp(const char lastName1, const char lastName2, size_t count) //count: number of characters we allow
+	return result; // not sure if this syntax works --seems cleaner	
+}
+
+// reads information from domestic student file, checks, and places into the array _studArray
+
+
+//ostream operator from Sharanjit's code
+ostream& operator <<(ostream& outs, const DomesticStudent& dom_student) //not sure if we should include const -- bc then can't modify
+{
+	outs<< dom_student.firstName;
+	outs<< dom_student.lastName;
+	outs<< dom_student.cgpa;
+	outs<< dom_student.researchScore;
+	outs<< dom_student.studentID;
+	outs<< dom_student.province;
+	return outs;
+}
+
+ostream& operator <<(ostream& outs, const InernationalStudent& int_student)//not sure if we should include const -- bc then can't modify?
+{
+	outs<< int_student.firstName;
+	outs<< int_student.lastName;
+	outs<< int_student.cgpa;
+	outs<< int_student.researchScore;
+	outs<< int_student.studentID;
+	outs<< int_student.country;
+	outs<< int_student.reading;
+	outs<< int_student.listening;
+	outs<< int_student.speaking;
+	outs<< int_student.writing;
+	outs<< int_student.totalScore;
+	return outs;
+}
