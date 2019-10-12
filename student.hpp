@@ -1,26 +1,152 @@
+/*ENSC 251 - LAB1
+*Authors: Saba Khangholi and Sharanjit Virdi
+*September 25, 2019
+*This is the header file studnent.hpp which declares all our classes.
+*/
 
+#pragma once 
+#define DEBUG 
+#ifdef DEBUG
+#define STUDENT_HPP  //Might havet to change it 
+
+#include <iostream>
+using namespace std; //use namespace std
+#include <string> //we will have to use string in C++
+
+//Create a parent class called student that has first_name, last_name, CGPA,
+//research_score, and student ID as its member variables.
 class Student
 {
-public:
-	friend ostream& operator <<(ostream& outs, const Student& student_person);
-	//Precondition: If outs is a file output stream, then outs has already been
-	//connected to a file
-	//Postcondition: ____________NEED TO FIGURE IT OUT_________
-	//...
+private:
+	string firstName;
+	string lastName;
+	float cgpa;
+	int researchScore;
+	int studentID;
 
-	//DO WE NEED TO OVERLOAD THIS?
-	friend istream& operator <<(istream& outs, const Student& student_person);
-	//Precondition: If outs is a file output stream, then outs has already been
-	//connected to a file
-	//Postcondition: ____________NEED TO FIGURE IT OUT_________
-	//...
-	
+	//check
+	bool checkcgpa();
+	bool checkresearchScore();
+
+public:
+	Student(); //Default Constructor
+	Student(string _firstName, string _lastName, float _cgpa, int _researchScore, int _studentID);
+
+	//Student(const Student& student_object);//Copy constructor 
+	~Student(); //Destructor. Returns all dynamic memory used by the object to the freestore
+
+	//get functions
+	string getfirstName();
+	string getlastName();
+	float  getcgpa();
+	int getresearchScore();
+	int getstudentID();
+
+
+	//set functions
+	void setfirstName(string firstName);
+	void setlastName(string lastName);
+	void setcgpa(float cgpa);
+	void setresearchScore(int researchScore);
+	void setstudentID(int studentID);
+
 	//friend funtion prototypes
 	friend int compareCGPA(float cgpa1, float cgpa2);
 	friend int compareResearchScore(int researchScore1, int researchScore2);
 	friend int compareFirstName(string firstName1, string firstName2);
 	friend int compareLastName(string lastName1, string lastName2);
-}
+
+	//overloaded extraction and insection operators
+	friend ostream& operator <<(ostream& outs, const Student& student_person);
+	//Precondition: If outs is a file output stream, then outs has already been
+	//connected to a file
+
+	////DO WE NEED TO OVERLOAD THIS?=================================================????
+	//friend istream& operator <<(istream& outs, const Student& student_person);
+	////Precondition: If outs is a file output stream, then outs has already been
+	////connected to a file
+
+
+
+};
+
+//This is a child class from the parent class Student, which has inherited 
+//all the objects from the parent class and has extended to include the 
+//province object.
+//This allows for code reusability.
+class DomesticStudent :public Student
+{
+public:
+	DomesticStudent(); //Default Constructor
+	DomesticStudent(string province);
+
+	string getprovince();
+	void setprovince(string province);
+
+
+
+private:
+	string province;
+};
+
+//This is a seperate class for that will be used by the international students. 
+class ToeflScore
+{
+public:
+	ToeflScore(); //Default Constructor
+	ToeflScore(int reading, int listening, int speaking, int writing);
+
+	//This is a member function of the ToeflScore Class.
+	int addTOEFLScore();
+
+	int getreading();
+	int getlistening();
+	int getspeaking();
+	int getwriting();
+	int gettotalScore();
+
+	void setreading(int reading);
+	void setlistening(int listening);
+	void setspeaking(int speaking);
+	void setwriting(int writing);
+	void settotalScore(int totalScore);
+
+	bool checkreading();
+	bool checkwriting();
+	bool checklistening();
+	bool checkspeaking();
+	bool checktotalScore();
+
+private:
+	int reading;
+	int listening;
+	int speaking;
+	int writing;
+	int totalScore; // will sum of reading, listening, speaking, and writing scores
+};
+
+//This is another child class from the parent class Student, which has inherited
+//all objects from the parent class and has extended to include the 
+//country object and the ToeflScore class.
+//This also allows for code reusability.
+class InternationalStudent :public Student
+{
+public:
+	InternationalStudent(); //Default Constructor
+	InternationalStudent(string country, ToeflScore TOEFL);
+
+	string getcountry();
+	void setcountry(string country);
+
+	ToeflScore getTOEFL();
+
+private:
+	string country;
+	ToeflScore TOEFL;
+
+};
+
+#endif
 
 
 //sort  functions
@@ -40,204 +166,3 @@ void sort_int_LastName(InternationalStudent);
 void swap_int(int*, int*);
 void swap_float(float*, float*);
 void swap_string(string*, string*);
-
-//NEED TO SEE IF Student and student_person
-//Assume student_person is a domestic or and international student object
-//THIS IS WRONG--> NEED TO HAVE SOMETHING DIFFERENT FOR DOM AND INT
-ostream& operator <<(ostream& outs, const Student& student_person)
-{
-	outs<< student_person.firstName;
-	outs<< student_person.lastName;
-	outs<< student_person.cgpa;
-	outs<< student_person.researchScore;
-	outs<< student_person.studentID;
-	outs<< student_person.province;
-	outs<< student_person.country;
-	outs<< student_person.reading;
-	outs<< student_person.listening;
-	outs<< student_person.speaking;
-	outs<< student_person.writing;
-	outs<< student_person.totalScore;
-	return outs;
-}
-
-
-//This is a Sort function that sorts the students by their CGPA --> using compareCGPA
-void sort_CGPA(Student _studArray)
-{	
-	int arr_len=sizeof(_studArray);
-	int i,j;
-	for (i=0, i<arr_len-1, i++)
-	{
-		for(j=0, j<arr_len-1, j++)
-		{
-			result=compareCGPA(_studArray[j].getcgpa(), _studArray[j+1].getcgpa());
-			if (result==-1)
-			{
-				swap_float(&_studArray[j], &_studArray[j+1]);
-			}
-		}
-	
-	} 
-}
-
-//This is a Sort function that sorts the students by their Research Score --> using compareResearchScore
-void sort_ResearchScore(Student _studArray)
-{	
-	int arr_len=sizeof(_studArray);
-	int i,j;
-	for (i=0, i<arr_len-1, i++)
-	{
-		for(j=0, j<arr_len-1, j++)
-		{
-			result=compareResearchScore(_studArray[j].getresearchScore(), _studArray[j+1].getResearchScore());
-			if (result==-1)
-			{
-				swap(&_studArray[j], &_studArray[j+1]);
-			}
-		}
-	
-	} 
-}
-
-//This is a Sort function that sorts the students by their First Name Score --> using compareFirstName
-void sort_FirstName(Student _studArray)
-{	
-	int arr_len=sizeof(_studArray);
-	int i,j;
-	for (i=0, i<arr_len-1, i++)
-	{
-		for(j=0, j<arr_len-1, j++)
-		{
-			result=compareFirstName(_studArray[j].getfirstName(), _studArray[j+1].getfirstName());
-			if (result==1)
-			{
-				swap_string(&_studArray[j], &_studArray[j+1]);
-			}
-		}
-	
-	} 
-}
-
-//This is a Sort function that sorts the students by their Last Name Score --> using compareLastName
-void sort_LastName(Student _studArray)
-{	
-	int arr_len=sizeof(_studArray);
-	int i,j;
-	for (i=0, i<arr_len-1, i++)
-	{
-		for(j=0, j<arr_len-1, j++)
-		{
-			result=compareLastName(_studArray[j].getcgpa(), _studArray[j+1].getcgpa());
-			if (result==1)
-			{
-				swap(&_studArray[j], &_studArray[j+1]);
-			}
-		}
-	
-	} 
-}
-
-
-void swap_int(int *first, int *second)
-{	
-	int temp;
-	temp=*first;
-	*first=*second;
-	*second=temp;
-}
-
-void swap_float(float *first, float *second)
-{	
-	float temp;
-	temp=*first;
-	*first=*second;
-	*second=temp;
-}
-
-void swap_string(string *first, string *second)
-{	
-	string temp;
-	temp=*first;
-	*first=*second;
-	*second=temp;
-}
-//Compare functions: 1 for greater, 0 for equal, -1 for less
-
-
-
-//Print Array function for Domestic Students
-void PrintArrayDomestic(Student _studArray)
-{
-	int arr_len=sizeof(_studArray);
-	int i,j;
-	for (i=0, i<arr_len-1, i++)
-	{
-		cout<< _studArray[i].getstdentID()<<" "
-			<< _studArray[i].getfirstName()<<" "
-			<< _studArray[i].getlastName()<<" "
-			<< _studArray[i].getprovince()<<" "
-			<< _studArray[i].getcgpa()<<" "
-			<< _studArray[i].getresearchScore()<<" "<< endl;
-	}
-}
-
-//Print Array function for International Students
-void PrintArrayInternational(Student _studArray)
-{
-	int arr_len=sizeof(_studArray);
-	int i,j;
-	for (i=0, i<arr_len-1, i++)
-	{
-		cout<< _studArray[i].getstudentID()<<" "
-			<< _studArray[i].getfirstName()<<" "
-			<< _studArray[i].getlastName()<<" "
-			<< _studArray[i].getcountry()<<" "
-			<< _studArray[i].getcgpa()<<" "
-			<< _studArray[i].getresearchScore()<<" "
-			<< _studArray[i].getTOEFL().getreading()<<" "
-			<< _studArray[i].getTOEFL().getlistening()<<" "
-			<< _studArray[i].getTOEFL().getspeaking()<<" "
-			<< _studArray[i].getTOEFL().getwriting()<<" "			
-			<< _studArray[i].getTOEFL().addTOEFLScore()<<endl;
-//Not sure if the access to the getTOEFL works or not
-	}
-}
-
-/*
-//This is a Sort function that sorts the students by their CGPA --> usinf swap
-void sort_CGPA(Student _studArray)
-{	
-	int arr_len=sizeof(_studArray);
-	int i,j;
-	for (i=0, i<arr_len-1, i++)
-	{
-		for(j=0, j<arr_len-1, j++)
-		{
-			if (_studArray[j].getcgpa()>_studArray[j+1].getcgpa())
-			{
-				swap(&_studArray[j], &_studArray[j+1]);
-			}
-		}
-	
-	} 
-}
-
-//This is a Sort function that sorts the students by their rese
-void sort_ResearchScore(Student _studArray)
-{	
-	int arr_len=sizeof(_studArray);
-	int i,j;
-	for (i=0, i<arr_len-1, i++)
-	{
-		for(j=0, j<arr_len-1, j++)
-		{
-			if (_studArray[j].getresearchScore()>_studArray[j+1].getresearchScore())
-			{
-				swap(&_studArray[j], &_studArray[j+1]);
-			}
-		}
-	
-	} 
-}
-*/
