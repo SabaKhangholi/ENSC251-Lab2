@@ -252,7 +252,7 @@ ostream& operator <<(ostream& outs, const DomesticStudent& dom_student) //not su
 	return outs;
 }
 
-ostream& operator <<(ostream& outs, const InernationalStudent& int_student)//not sure if we should include const -- bc then can't modify?
+ostream& operator <<(ostream& outs, const InternationalStudent& int_student)//not sure if we should include const -- bc then can't modify?
 {
 	outs<< int_student.firstName;
 	outs<< int_student.lastName;
