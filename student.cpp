@@ -149,6 +149,11 @@ int ToeflScore::gettotalScore()
 	return totalScore;
 };
 
+ToeflScore InternationalStudent::getTOEFL()
+{
+	return TOEFL;
+};
+
 //set function implementation/definition
 /*These are the definitions of the public mutator member functions of each one of the four classes. We use the
 scope resolution operator "::" to specify the class in which the member function is used. These mutator functions
