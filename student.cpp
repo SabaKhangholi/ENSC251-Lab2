@@ -267,3 +267,31 @@ ostream& operator <<(ostream& outs, const InternationalStudent& int_student)//no
 	outs<< int_student.totalScore;
 	return outs;
 }
+
+ostream& operator <<(ostream& outs, DomesticStudent& dom_student) //not sure if we should include const -- bc then can't modify
+{
+	outs << dom_student.getfirstName();
+	outs << dom_student.getlastName();
+	outs << dom_student.getcgpa();
+	outs << dom_student.getresearchScore();
+	outs << dom_student.getstudentID();
+	outs << dom_student.getprovince();
+	return outs;
+}
+
+ostream& operator <<(ostream& outs, InternationalStudent& int_student)//not sure if we should include const -- bc then can't modify?
+{
+	outs << int_student.getfirstName();
+	outs << int_student.getlastName();
+	outs << int_student.getcgpa();
+	outs << int_student.getresearchScore();
+	outs << int_student.getstudentID();
+	outs << int_student.getcountry();
+	outs << int_student.getreading();
+	outs << int_student.getlistening();
+	outs << int_student.getspeaking();
+	outs << int_student.getwriting();
+	outs << int_student.gettotalScore();
+	return outs;
+}
+
