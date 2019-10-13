@@ -508,39 +508,38 @@ int compareresearchScore(int researchScore1, int researchScore2)
 
 
 
-//friend function definitons -- updated ones from today (saturday)
-int compareCGPA(float cgpa1, float cgpa2)
+//friend function definitons
+int compareCGPA(Student student1, Student student2)
 {
-	if (cgpa1 > cgpa2)
+	if (student1.cgpa > student2.cgpa)
 	{
 		return 1;
 	}
-	else if (cgpa1 = cgpa2)
+	else if (student1.cgpa = student2.cgpa)
 	{
 		return 0;
 	}
-	else if (cgpa1 < cgpa2)
+	else
 	{
 		return -1;
 	};
 };
 
-int compareresearchScore(int researchScore1, int researchScore2)
+int compareResearchScore(Student student1, Student student2)
 {
-	if (researchScore1 > researchScore2)
+	if (student1.researchScore > student2.researchScore)
 	{
 		return 1;
 	}
-	else if (researchScore1 = researchScore2)
+	else if (student1.researchScore = student2.researchScore)
 	{
 		return 0;
 	}
-	else if (researchScore1 < researchScore2)
+	else
 	{
 		return -1;
 	};
 };
-
 
 
 int compareFirstName(const char* firstName1, const char* firstName2, int count, int result)
