@@ -509,13 +509,13 @@ int compareresearchScore(int researchScore1, int researchScore2)
 
 
 //friend function definitons
-int compareCGPA(Student student1, Student student2)
+int compareCGPA(DomesticStudent dom_student1, DomesticStudent dom_student2)
 {
-	if (student1.cgpa > student2.cgpa)
+	if (dom_student1.cgpa > dom_student2.cgpa)
 	{
 		return 1;
 	}
-	else if (student1.cgpa = student2.cgpa)
+	else if (dom_student1.cgpa = dom_student2.cgpa)
 	{
 		return 0;
 	}
@@ -525,13 +525,13 @@ int compareCGPA(Student student1, Student student2)
 	};
 };
 
-int compareResearchScore(Student student1, Student student2)
+int compareResearchScore(DomesticStudent dom_student1, DomesticStudent dom_student2)
 {
-	if (student1.researchScore > student2.researchScore)
+	if (dom_student1.researchScore > dom_student2.researchScore)
 	{
 		return 1;
 	}
-	else if (student1.researchScore = student2.researchScore)
+	else if (dom_student1.researchScore = dom_student2.researchScore)
 	{
 		return 0;
 	}
@@ -541,6 +541,37 @@ int compareResearchScore(Student student1, Student student2)
 	};
 };
 
+int compareCGPA(InternationalStudent int_student1, InternationalStudent int_student2)
+{
+	if (int_student1.cgpa > int_student2.cgpa)
+	{
+		return 1;
+	}
+	else if (int_student1.cgpa = int_student2.cgpa)
+	{
+		return 0;
+	}
+	else
+	{
+		return -1;
+	};
+};
+
+int compareResearchScore(DomesticStudent dom_student1, DomesticStudent dom_student2)
+{
+	if (int_student1.researchScore > int_student2.researchScore)
+	{
+		return 1;
+	}
+	else if (int_student1.researchScore = int_student2.researchScore)
+	{
+		return 0;
+	}
+	else
+	{
+		return -1;
+	};
+};
 
 int compareFirstName(const char* firstName1, const char* firstName2, int count, int result)
 {
