@@ -508,54 +508,64 @@ int compareresearchScore(int researchScore1, int researchScore2)
 
 
 
-//friend function definitons
-friend int compareCGPA(float cgpa1 cgpa2)
+//friend function definitons -- updated ones from today (saturday)
+int compareCGPA(float cgpa1, float cgpa2)
 {
-	if (cgpa1> cgpa2)
+	if (cgpa1 > cgpa2)
 	{
-	return 1;	
+		return 1;
 	}
-	else if (cgpa1= cgpa2)
+	else if (cgpa1 = cgpa2)
 	{
 		return 0;
 	}
-	else (cgpa1< cgpa2)
+	else if (cgpa1 < cgpa2)
 	{
 		return -1;
-	}	
-}
+	};
+};
 
-friend int compareresearchScore(float researchScore1 researchScore2)
+int compareresearchScore(int researchScore1, int researchScore2)
 {
-	
-	if (researchScore1> researchScore2)
+	if (researchScore1 > researchScore2)
 	{
-	return 1;	
+		return 1;
 	}
-	else if (researchScore1= researchScore2)
+	else if (researchScore1 = researchScore2)
 	{
 		return 0;
 	}
-	else (researchScore1< researchScore2)
+	else if (researchScore1 < researchScore2)
 	{
 		return -1;
-	}
+	};
+};
+
+
+
+int compareFirstName(const char* firstName1, const char* firstName2, int count, int result)
+{
+	count = 30;
+	result = std::strncmp(firstName1, firstName2, count);
 	
+	if (result < 0)
+		return -1;
+	else if (result == 0)
+		return 0;
+	else
+		return 1;
 }
 
-friend int compareFirstName(string firstName1 firstName2)
+int compareLastName(const char* lastName1, const char* lastName2, int count, int result)
 {
-	int count = 30;
-	result = strncmp(const char firstName1, const char firstName2, size_t count) //count: number of characters we allow
-	return result; // not sure if this syntax works --seems cleaner
-}
+	count = 30;
+	result = std::strncmp(lastName1, lastName2, count);
 
-friend int compareLastName(string lastName1 lastName2)
-{
-	int count = 30;
-	result = strncmp(const char lastName1, const char lastName2, size_t count) //count: number of characters we allow
-	return result; // not sure if this syntax works --seems cleaner	
+	if (result < 0)
+		return -1;
+	else if (result == 0)
+		return 0;
+	else
+		return 1;
 }
-
-// reads information from domestic student file, checks, and places into the array _studArray
 
